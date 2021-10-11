@@ -14,6 +14,11 @@ import torch.nn as nn
 import config as cfg
 from utils.helpers import truncated_normal_
 
+########### my changes ###########
+from transformers import GPT2LMHeadModel,AdamW
+from transformers.optimization import get_linear_schedule_with_warmup
+########### my changes ###########
+
 
 class LSTMGenerator(nn.Module):
 
