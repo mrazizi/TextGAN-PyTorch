@@ -126,6 +126,7 @@ if __name__ == '__main__':
     # ===Dict===
     if cfg.if_real_data:
         from instructor.real_data.seqgan_instructor import SeqGANInstructor
+        from instructor.real_data.tgan_instructor import TGANInstructor
         from instructor.real_data.leakgan_instructor import LeakGANInstructor
         from instructor.real_data.maligan_instructor import MaliGANInstructor
         from instructor.real_data.jsdgan_instructor import JSDGANInstructor
@@ -152,6 +153,7 @@ if __name__ == '__main__':
 
     instruction_dict = {
         'seqgan': SeqGANInstructor,
+        'tgan': TGANInstructor,
         'leakgan': LeakGANInstructor,
         'maligan': MaliGANInstructor,
         'jsdgan': JSDGANInstructor,
@@ -165,6 +167,7 @@ if __name__ == '__main__':
     }
 
     inst = instruction_dict[cfg.run_model](opt)
+    print("hey")
     if not cfg.if_test:
         inst._run()
     else:

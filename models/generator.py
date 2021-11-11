@@ -14,12 +14,6 @@ import torch.nn as nn
 import config as cfg
 from utils.helpers import truncated_normal_
 
-########### my changes ###########
-from transformers import GPT2LMHeadModel,AdamW
-from transformers.optimization import get_linear_schedule_with_warmup
-########### my changes ###########
-
-
 class LSTMGenerator(nn.Module):
 
     def __init__(self, embedding_dim, hidden_dim, vocab_size, max_seq_len, padding_idx, gpu=False):
@@ -63,6 +57,7 @@ class LSTMGenerator(nn.Module):
             return pred, hidden
         else:
             return pred
+
 
     def sample(self, num_samples, batch_size, start_letter=cfg.start_letter):
         """
