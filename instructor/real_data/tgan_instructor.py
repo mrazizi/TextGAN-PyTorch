@@ -30,8 +30,8 @@ class TGANInstructor(BasicInstructor):
         self.init_model()
 
         # Optimizer
-        self.gen_opt = optim.Adam(self.gen.parameters, lr=cfg.gen_lr)
-        self.gen_adv_opt = optim.Adam(self.gen.parameters, lr=cfg.gen_lr)
+        self.gen_opt = optim.Adam(self.gen.model.parameters(), lr=cfg.gen_lr)
+        self.gen_adv_opt = optim.Adam(self.gen.model.parameters(), lr=cfg.gen_lr)
         self.dis_opt = optim.Adam(self.dis.parameters(), lr=cfg.dis_lr)
 
     def _run(self):

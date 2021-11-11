@@ -35,8 +35,6 @@ class TransformerGenerator:
         if self.gpu:
             self.model.to("cuda")
 
-        self.parameters = self.model.parameters()
-
     def forward(self, inp, hidden, need_hidden=False):
         """
         Embeds input and applies LSTM
