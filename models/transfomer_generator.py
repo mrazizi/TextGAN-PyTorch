@@ -10,10 +10,9 @@ from transformers import GPT2Config, GPT2Tokenizer, GPT2LMHeadModel, AdamW
 from transformers.optimization import get_linear_schedule_with_warmup
 
 
-class TransformerGenerator(nn.Module):
+class TransformerGenerator():
 
     def __init__(self, embedding_dim, hidden_dim, vocab_size, max_seq_len, padding_idx, gpu=False):
-        super(TransformerGenerator, self).__init__()
         self.name = 'transformer'
 
         self.max_seq_len = max_seq_len
@@ -24,8 +23,6 @@ class TransformerGenerator(nn.Module):
         self.temperature = 1.0
 
         # loading pretrained tokenizer
-        print("hey2")
-
         self.tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
         self.special_tokens = {'pad_token':'<|pad|>','sep_token':'<|sep|>'}
         self.num_add_toks = self.tokenizer.add_special_tokens(self.special_tokens)
@@ -34,11 +31,11 @@ class TransformerGenerator(nn.Module):
 
         model = GPT2LMHeadModel.from_pretrained('gpt2')
         model.resize_token_embeddings(len(self.tokenizer))
-        print("hey1")
 
         if self.gpu:
             model.to("cuda")
 
+        self.parameters = self.model.parameters()
 
     def forward(self, inp, hidden, need_hidden=False):
         """
