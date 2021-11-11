@@ -29,11 +29,11 @@ class TransformerGenerator():
 
         # loading pretrained model
 
-        model = GPT2LMHeadModel.from_pretrained('gpt2')
-        model.resize_token_embeddings(len(self.tokenizer))
+        self.model = GPT2LMHeadModel.from_pretrained('gpt2')
+        self.model.resize_token_embeddings(len(self.tokenizer))
 
         if self.gpu:
-            model.to("cuda")
+            self.model.to("cuda")
 
         self.parameters = self.model.parameters()
 
