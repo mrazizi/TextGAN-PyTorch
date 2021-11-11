@@ -10,7 +10,7 @@ from transformers import GPT2Config, GPT2Tokenizer, GPT2LMHeadModel, AdamW
 from transformers.optimization import get_linear_schedule_with_warmup
 
 
-class TransformerGenerator():
+class TransformerGenerator:
 
     def __init__(self, embedding_dim, hidden_dim, vocab_size, max_seq_len, padding_idx, gpu=False):
         self.name = 'transformer'
